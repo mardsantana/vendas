@@ -1,6 +1,7 @@
 package br.com.vendas.vendasms.domain;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,7 +13,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 
 @Getter
-@Entity(name = "/saidas")
+@Entity(name = "saidas")
 public class SaidasProdutos {
 
 	@Id
@@ -20,7 +21,7 @@ public class SaidasProdutos {
     private Long id;
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Produto produto;
+    private Produtos produto;
     @Column(nullable = false)
     private Integer quantidade;
     @Column(nullable = false)

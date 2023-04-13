@@ -1,6 +1,7 @@
 package br.com.vendas.vendasms.domain;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,14 +12,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 
-@RequestMapping("/entradas/saidas")
+
 @Getter
 @Entity
-public class Produto {
+public class Produtos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idProdutos;
     @Column(nullable = false, unique = true)
     private String nome;
     @Column(nullable = false)
