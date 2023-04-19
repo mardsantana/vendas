@@ -4,5 +4,5 @@ import br.com.vendas.vendasms.application.api.ProdutosRequest;
 import br.com.vendas.vendasms.application.api.ProdutosResponse;
 
 public interface ProdutosService {
-     ProdutosResponse chamaProduto(ProdutosRequest produtosRequest);
+     ProdutosResponse criaProduto(ProdutosRequest produtosRequest);
 }

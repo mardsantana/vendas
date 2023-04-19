@@ -1,18 +1,21 @@
 package br.com.vendas.vendasms.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import br.com.vendas.vendasms.application.api.ProdutosRequest;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @Entity
 public class Produtos {
@@ -29,6 +32,13 @@ public class Produtos {
     @Column(nullable = false)
     private Integer quantidadeMaxima;
     @Column(nullable = false)
-    private LocalDateTime criadoEm;
+    private LocalDate criadoEm;
 
+    public Produtos(ProdutosRequest produtosRequest) {
+        this.nome = produtosRequest.getNome();
+        this.descricao =  produtosRequest.getDescricao();
+        this.quantidadeMinima =  produtosRequest.getQuantidadeMinima();
+        this.quantidadeMaxima =  produtosRequest.getQuantidadeMaxima();
+        this.criadoEm = produtosRequest.getCriadoEm();
+    }
 }
