@@ -1,12 +1,13 @@
 package br.com.vendas.vendasms.application.api;
 
 import jakarta.persistence.Column;
-import lombok.Value;
+import lombok.Data;
+
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-@Value
+
+@Data
 public class ProdutosRequest {
     @Column(nullable = false, unique = true)
     private String nome;

@@ -12,8 +12,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @SpringBootApplication
-@RestController
-@RequestMapping("/")
 public class VendasProdutosApplication extends SpringBootServletInitializer {
 	
 	public String getHomeTest() {
@@ -22,22 +20,6 @@ public class VendasProdutosApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(VendasProdutosApplication.class, args);
-	}
-
-	@Configuration
-	public class WebMvcConfig implements WebMvcConfigurer {
-		@Override
-		public void addResourceHandlers(ResourceHandlerRegistry registry) {
-			registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
-		}
-
-		@Bean
-		public InternalResourceViewResolver resolver() {
-			InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-			resolver.setPrefix("/WEB-INF/views/");
-			resolver.setSuffix(".jsp");
-			return resolver;
-		}
 	}
 
 }
