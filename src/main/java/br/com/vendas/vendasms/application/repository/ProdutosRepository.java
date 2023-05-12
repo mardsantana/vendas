@@ -1,10 +1,13 @@
 package br.com.vendas.vendasms.application.repository;
 
-import br.com.vendas.vendasms.domain.Produtos;
-import org.springframework.stereotype.Repository;
+import br.com.vendas.vendasms.domain.Produto;
+
+import java.util.List;
 
 
 public interface ProdutosRepository {
 
-    Produtos salva(Produtos produtos);
+    Produto salva(Produto produtos);
+    List<Produto> buscaProdutosGerais();
+    Produto buscaProdutosPorID(Long idProduto);
 }

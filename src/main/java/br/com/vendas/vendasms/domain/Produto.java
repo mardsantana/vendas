@@ -1,7 +1,6 @@
 package br.com.vendas.vendasms.domain;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import br.com.vendas.vendasms.application.api.ProdutosRequest;
 
@@ -18,11 +17,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @Entity
-public class Produtos {
+public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProdutos;
+    private Long idProduto;
     @Column(nullable = false, unique = true)
     private String nome;
     @Column(nullable = false)
@@ -34,7 +33,7 @@ public class Produtos {
     @Column(nullable = false)
     private LocalDate criadoEm;
 
-    public Produtos(ProdutosRequest produtosRequest) {
+    public Produto(ProdutosRequest produtosRequest) {
         this.nome = produtosRequest.getNome();
         this.descricao =  produtosRequest.getDescricao();
         this.quantidadeMinima =  produtosRequest.getQuantidadeMinima();

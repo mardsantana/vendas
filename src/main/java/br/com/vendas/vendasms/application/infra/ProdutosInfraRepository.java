@@ -1,21 +1,39 @@
 package br.com.vendas.vendasms.application.infra;
 
 import br.com.vendas.vendasms.application.repository.ProdutosRepository;
-import br.com.vendas.vendasms.domain.Produtos;
+import br.com.vendas.vendasms.domain.Produto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 @Log4j2
 @RequiredArgsConstructor
 public class ProdutosInfraRepository implements ProdutosRepository{
-    private final ClienteSpringDataJPARepository clienteSpringDataJPARepository;
+    private final ProdutoSpringDataJPARepository produtoSpringDataJPARepository;
     @Override
-    public Produtos salva(Produtos produtos) {
+    public Produto salva(Produto produtos) {
         log.info("[start] ProdutosInfraRepository - salva");
-        clienteSpringDataJPARepository.save(produtos);
+        produtoSpringDataJPARepository.save(produtos);
         log.info("[finish] ProdutosInfraRepository - salva");
         return produtos;
+    }
+    @Override
+    public List<Produto> buscaProdutosGerais() {
+        log.info("[start] ProdutosInfraRepository - buscaProdutosGerais");
+        List<Produto> produtosGerais = produtoSpringDataJPARepository.findAll();
+        log.info("[finish] ProdutosInfraRepository - buscaProdutosGerais");
+        return produtosGerais;
+    }
+
+    @Override
+    public Produto buscaProdutosPorID(Long idProduto) {
+        log.info("[start] ProdutosInfraRepository - buscaProdutosPorID");
+        Produto produto = produtoSpringDataJPARepository.findById(idProduto)
+                        .orElseThrow(() -> new RuntimeException("Produto não Encotrado"));
+        log.info("[finish] ProdutosInfraRepository - buscaProdutosPorID");
+        return produto;
     }
 }
