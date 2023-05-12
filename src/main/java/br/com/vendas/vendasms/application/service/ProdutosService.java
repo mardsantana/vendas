@@ -11,4 +11,5 @@ public interface ProdutosService {
     ProdutosResponse criaProduto(ProdutosRequest produtosRequest);
     List<ProdutoListResponse> buscaProdutosGerais();
     ProdutoDetailResponse buscaProdutosPorID(Long idProduto);
+    void deleteProdutoPorID(Long idProduto);
 }

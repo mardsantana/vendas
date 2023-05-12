@@ -44,6 +44,14 @@ public class ProdutosController {
         return produtoDetail;
     }
 
+    @DeleteMapping(value = "/{idProduto}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deleteProdutoPorID(@PathVariable Long idProduto){
+        log.info("[start] ProdutosController - deleteProdutoPorID");
+        log.info("[idProduto]{}", idProduto);
+        produtosService.deleteProdutoPorID(idProduto);
+        log.info("[finish] ProdutosController - deleteProdutoPorID");
+    }
 
 }
 
