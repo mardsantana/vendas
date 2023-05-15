@@ -27,7 +27,6 @@ public class ProdutosInfraRepository implements ProdutosRepository{
         log.info("[finish] ProdutosInfraRepository - buscaProdutosGerais");
         return produtosGerais;
     }
-
     @Override
     public Produto buscaProdutosPorID(Long idProduto) {
         log.info("[start] ProdutosInfraRepository - buscaProdutosPorID");
@@ -36,7 +35,6 @@ public class ProdutosInfraRepository implements ProdutosRepository{
         log.info("[finish] ProdutosInfraRepository - buscaProdutosPorID");
         return produto;
     }
-
     @Override
     public void deleteProduto(Produto produto) {
         log.info("[start] ProdutosInfraRepository - deleteProduto");

@@ -33,17 +33,16 @@ public class ProdutosController {
         log.info("[finish] ProdutosController - getProdutoGeral");
         return produto;
     }
-
     @GetMapping(value = "/{idProduto}")
     @ResponseStatus(code = HttpStatus.OK)
     ProdutoDetailResponse getProdutoPorID(@PathVariable Long idProduto){
         log.info("[start] ProdutosController - getProdutoPorID");
         log.info("[idProduto]{}", idProduto);
         ProdutoDetailResponse produtoDetail = produtosService.buscaProdutosPorID(idProduto);
+        produtoDetail.setEntradas(produtosService.buscaEntradasPorIDProduto(idProduto));
         log.info("[finish] ProdutosController - getProdutoPorID");
         return produtoDetail;
     }
-
     @DeleteMapping(value = "/{idProduto}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deleteProdutoPorID(@PathVariable Long idProduto){
@@ -52,6 +51,5 @@ public class ProdutosController {
         produtosService.deleteProdutoPorID(idProduto);
         log.info("[finish] ProdutosController - deleteProdutoPorID");
     }
-
 }
 
