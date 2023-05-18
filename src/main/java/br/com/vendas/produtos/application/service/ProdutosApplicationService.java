@@ -1,16 +1,17 @@
-package br.com.vendas.vendasms.application.service;
+package br.com.vendas.produtos.application.service;
 
-import br.com.vendas.vendasms.application.api.ProdutoDetailResponse;
-import br.com.vendas.vendasms.application.api.ProdutoListResponse;
-import br.com.vendas.vendasms.application.api.ProdutosRequest;
-import br.com.vendas.vendasms.application.api.ProdutosResponse;
-import br.com.vendas.vendasms.application.repository.ProdutosRepository;
-import br.com.vendas.vendasms.domain.Produto;
+import br.com.vendas.produtos.application.api.ProdutoDetailResponse;
+import br.com.vendas.produtos.application.api.ProdutoListResponse;
+import br.com.vendas.produtos.application.api.ProdutosRequest;
+import br.com.vendas.produtos.application.api.ProdutosResponse;
+import br.com.vendas.produtos.application.repository.ProdutosRepository;
+import br.com.vendas.produtos.domain.Produto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Log4j2
@@ -31,17 +32,15 @@ public class ProdutosApplicationService implements ProdutosService{
         log.info("[finish] ProdutosApplicationService - buscaProdutosGerais");
         return ProdutoListResponse.converte(produtos);
     }
-
     @Override
-    public ProdutoDetailResponse buscaProdutosPorID(Long idProduto) {
+    public ProdutoDetailResponse buscaProdutosPorID(UUID idProduto) {
         log.info("[start] ProdutoApplicationService - buscaProdutosPorID");
         Produto produto = produtosRepository.buscaProdutosPorID(idProduto);
         log.info("[finish] ProdutoApplicationService - buscaProdutosPorID");
         return new ProdutoDetailResponse(produto);
     }
-
     @Override
-    public void deleteProdutoPorID(Long idProduto) {
+    public void deleteProdutoPorID(UUID idProduto) {
         log.info("[start] ProdutosApplicationService - deleteProdutoPorID");
         Produto produto = produtosRepository.buscaProdutosPorID(idProduto);
         produtosRepository.deleteProduto(produto);

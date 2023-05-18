@@ -1,14 +1,10 @@
-package br.com.vendas.vendasms.domain;
+package br.com.vendas.produtos.domain;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
-import br.com.vendas.vendasms.application.api.ProdutosRequest;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import br.com.vendas.produtos.application.api.ProdutosRequest;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +17,7 @@ public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProduto;
+    private UUID idProduto;
     @Column(nullable = false, unique = true)
     private String nome;
     @Column(nullable = false)

@@ -1,17 +1,17 @@
-package br.com.vendas.vendasms.application.api;
+package br.com.vendas.produtos.application.api;
 
-import br.com.vendas.vendasms.application.service.ProdutosService;
+import br.com.vendas.produtos.application.service.ProdutosService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping("/v1/produtos")
+@RequestMapping("/produtos")
 @Log4j2
 @RequiredArgsConstructor
 public class ProdutosController {
@@ -35,17 +35,16 @@ public class ProdutosController {
     }
     @GetMapping(value = "/{idProduto}")
     @ResponseStatus(code = HttpStatus.OK)
-    ProdutoDetailResponse getProdutoPorID(@PathVariable Long idProduto){
+    ProdutoDetailResponse getProdutoPorID(@PathVariable UUID idProduto){
         log.info("[start] ProdutosController - getProdutoPorID");
         log.info("[idProduto]{}", idProduto);
         ProdutoDetailResponse produtoDetail = produtosService.buscaProdutosPorID(idProduto);
-        produtoDetail.setEntradas(produtosService.buscaEntradasPorIDProduto(idProduto));
         log.info("[finish] ProdutosController - getProdutoPorID");
         return produtoDetail;
     }
     @DeleteMapping(value = "/{idProduto}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void deleteProdutoPorID(@PathVariable Long idProduto){
+    void deleteProdutoPorID(@PathVariable UUID idProduto){
         log.info("[start] ProdutosController - deleteProdutoPorID");
         log.info("[idProduto]{}", idProduto);
         produtosService.deleteProdutoPorID(idProduto);

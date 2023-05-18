@@ -1,12 +1,16 @@
-package br.com.vendas.vendasms.application.infra;
+package br.com.vendas.produtos.application.infra;
 
-import br.com.vendas.vendasms.application.repository.ProdutosRepository;
-import br.com.vendas.vendasms.domain.Produto;
+import br.com.vendas.produtos.application.handler.APIException;
+import br.com.vendas.produtos.application.repository.ProdutosRepository;
+import br.com.vendas.produtos.domain.Produto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 @Log4j2
@@ -16,7 +20,11 @@ public class ProdutosInfraRepository implements ProdutosRepository{
     @Override
     public Produto salva(Produto produtos) {
         log.info("[start] ProdutosInfraRepository - salva");
-        produtoSpringDataJPARepository.save(produtos);
+        try {
+            produtoSpringDataJPARepository.save(produtos);
+        } catch (DataIntegrityViolationException e){
+            throw APIException.build(HttpStatus.BAD_REQUEST, "Existem dados Duplicados", e);
+        }
         log.info("[finish] ProdutosInfraRepository - salva");
         return produtos;
     }
@@ -28,10 +36,10 @@ public class ProdutosInfraRepository implements ProdutosRepository{
         return produtosGerais;
     }
     @Override
-    public Produto buscaProdutosPorID(Long idProduto) {
+    public Produto buscaProdutosPorID(UUID idProduto) {
         log.info("[start] ProdutosInfraRepository - buscaProdutosPorID");
         Produto produto = produtoSpringDataJPARepository.findById(idProduto)
-                        .orElseThrow(() -> new RuntimeException("Produto não Encotrado"));
+                        .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Produto não encontrado"));
         log.info("[finish] ProdutosInfraRepository - buscaProdutosPorID");
         return produto;
     }

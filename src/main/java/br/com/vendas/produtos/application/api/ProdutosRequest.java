@@ -1,4 +1,4 @@
-package br.com.vendas.vendasms.application.api;
+package br.com.vendas.produtos.application.api;
 
 import jakarta.persistence.Column;
 import lombok.Data;
