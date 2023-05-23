@@ -1,6 +1,7 @@
 package br.com.vendas.produtos.application.api;
 
 import br.com.vendas.produtos.application.service.ProdutosService;
+import br.com.vendas.produtos.domain.Produto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -44,7 +45,7 @@ public class ProdutosController {
     }
     @DeleteMapping(value = "/{idProduto}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void deleteProdutoPorID(@PathVariable UUID idProduto){
+    void deleteProdutoPorID(@PathVariable UUID idProduto) {
         log.info("[start] ProdutosController - deleteProdutoPorID");
         log.info("[idProduto]{}", idProduto);
         produtosService.deleteProdutoPorID(idProduto);

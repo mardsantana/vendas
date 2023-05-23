@@ -5,7 +5,10 @@ import java.util.UUID;
 
 import br.com.vendas.produtos.application.api.ProdutosRequest;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,20 +16,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @Entity
+@Data
 public class Produto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idProduto;
-    @Column(nullable = false, unique = true)
+    @NotBlank
     private String nome;
-    @Column(nullable = false)
+    @NotBlank
     private String descricao;
-    @Column(nullable = false)
+    @NotNull
     private Integer quantidadeMinima;
-    @Column(nullable = false)
+    @NotNull
     private Integer quantidadeMaxima;
-    @Column(nullable = false)
+    @NotNull
     private LocalDate criadoEm;
 
     public Produto(ProdutosRequest produtosRequest) {
