@@ -34,22 +34,22 @@ public class ProdutosController {
         log.info("[finish] ProdutosController - getProdutoGeral");
         return produto;
     }
-    @GetMapping(value = "/{idProduto}")
+    @GetMapping(value = "/{nome}")
     @ResponseStatus(code = HttpStatus.OK)
-    ProdutoDetailResponse getProdutoPorID(@PathVariable UUID idProduto){
-        log.info("[start] ProdutosController - getProdutoPorID");
-        log.info("[idProduto]{}", idProduto);
-        ProdutoDetailResponse produtoDetail = produtosService.buscaProdutosPorID(idProduto);
-        log.info("[finish] ProdutosController - getProdutoPorID");
+    ProdutoDetailResponse getProdutoPorNome(@PathVariable String nome){
+        log.info("[start] ProdutosController - getProdutoPorNome");
+        log.info("[nome]{}", nome);
+        ProdutoDetailResponse produtoDetail = produtosService.buscaProdutosPorNome(nome);
+        log.info("[finish] ProdutosController - getProdutoPorNome");
         return produtoDetail;
     }
-    @DeleteMapping(value = "/{idProduto}")
+    @DeleteMapping(value = "/{nome}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void deleteProdutoPorID(@PathVariable UUID idProduto) {
-        log.info("[start] ProdutosController - deleteProdutoPorID");
-        log.info("[idProduto]{}", idProduto);
-        produtosService.deleteProdutoPorID(idProduto);
-        log.info("[finish] ProdutosController - deleteProdutoPorID");
+    void deleteProdutoPorNome(@PathVariable String nome) {
+        log.info("[start] ProdutosController - deleteProdutoPorNome");
+        log.info("[nome]{}", nome);
+        produtosService.deleteProdutoPorNome(nome);
+        log.info("[finish] ProdutosController - deleteProdutoPorNome");
     }
 }
 

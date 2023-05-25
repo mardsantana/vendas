@@ -11,6 +11,6 @@ import java.util.UUID;
 public interface ProdutosService {
     ProdutosResponse criaProduto(ProdutosRequest produtosRequest);
     List<ProdutoListResponse> buscaProdutosGerais();
-    ProdutoDetailResponse buscaProdutosPorID(UUID idProduto);
-    void deleteProdutoPorID(UUID idProduto);
+    ProdutoDetailResponse buscaProdutosPorNome(String nome);
+    void deleteProdutoPorNome(String nome);
 }

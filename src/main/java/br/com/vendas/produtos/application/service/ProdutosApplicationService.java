@@ -33,17 +33,17 @@ public class ProdutosApplicationService implements ProdutosService{
         return ProdutoListResponse.converte(produtos);
     }
     @Override
-    public ProdutoDetailResponse buscaProdutosPorID(UUID idProduto) {
-        log.info("[start] ProdutoApplicationService - buscaProdutosPorID");
-        Produto produto = produtosRepository.buscaProdutosPorID(idProduto);
-        log.info("[finish] ProdutoApplicationService - buscaProdutosPorID");
+    public ProdutoDetailResponse buscaProdutosPorNome(String nome) {
+        log.info("[start] ProdutoApplicationService - buscaProdutosPorNome");
+        Produto produto = produtosRepository.buscaProdutosPorNome(nome);
+        log.info("[finish] ProdutoApplicationService - buscaProdutosPorNome");
         return new ProdutoDetailResponse(produto);
     }
     @Override
-    public void deleteProdutoPorID(UUID idProduto) {
-        log.info("[start] ProdutosApplicationService - deleteProdutoPorID");
-        Produto produto = produtosRepository.buscaProdutosPorID(idProduto);
+    public void deleteProdutoPorNome(String nome) {
+        log.info("[start] ProdutosApplicationService - deleteProdutoPorNome");
+        Produto produto = produtosRepository.buscaProdutosPorNome(nome);
         produtosRepository.deleteProduto(produto);
-        log.info("[start] ProdutosApplicationService - deleteProdutoPorID");
+        log.info("[start] ProdutosApplicationService - deleteProdutoPorNome");
     }
 }

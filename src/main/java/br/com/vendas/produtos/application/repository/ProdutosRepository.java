@@ -10,6 +10,6 @@ public interface ProdutosRepository {
 
     Produto salva(Produto produtos);
     List<Produto> buscaProdutosGerais();
-    Produto buscaProdutosPorID(UUID idProduto);
+    Produto buscaProdutosPorNome(String nome);
     void deleteProduto(Produto produto);
 }

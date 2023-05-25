@@ -36,11 +36,11 @@ public class ProdutosInfraRepository implements ProdutosRepository{
         return produtosGerais;
     }
     @Override
-    public Produto buscaProdutosPorID(UUID idProduto) {
-        log.info("[start] ProdutosInfraRepository - buscaProdutosPorID");
-        Produto produto = produtoSpringDataJPARepository.findById(idProduto)
+    public Produto buscaProdutosPorNome(String nome) {
+        log.info("[start] ProdutosInfraRepository - buscaProdutosPorNome");
+        Produto produto = (Produto) produtoSpringDataJPARepository.findByNome(nome)
                         .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Produto não encontrado"));
-        log.info("[finish] ProdutosInfraRepository - buscaProdutosPorID");
+        log.info("[finish] ProdutosInfraRepository - buscaProdutosPorNome");
         return produto;
     }
     @Override
