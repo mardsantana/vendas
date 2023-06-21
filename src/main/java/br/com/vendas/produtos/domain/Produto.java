@@ -31,13 +31,13 @@ public class Produto {
     @NotNull
     private Integer quantidadeMaxima;
     @NotNull
-    private LocalDate criadoEm;
+//    private LocalDate criadoEm;
 
     public Produto(ProdutosRequest produtosRequest) {
         this.nome = produtosRequest.getNome();
         this.descricao =  produtosRequest.getDescricao();
         this.quantidadeMinima =  produtosRequest.getQuantidadeMinima();
         this.quantidadeMaxima =  produtosRequest.getQuantidadeMaxima();
-        this.criadoEm = produtosRequest.getCriadoEm();
+//        this.criadoEm = produtosRequest.getCriadoEm();
     }
 }

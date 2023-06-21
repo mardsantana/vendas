@@ -46,4 +46,12 @@ public class ProdutosApplicationService implements ProdutosService{
         produtosRepository.deleteProduto(produto);
         log.info("[start] ProdutosApplicationService - deleteProdutoPorNome");
     }
+
+    @Override
+    public Produto getProdutoById(int id) {
+        log.info("[start] ProdutosApplicationService - getProdutoById");
+
+        log.info("[finish] ProdutosApplicationService - getProdutoById");
+        return null;
+    }
 }

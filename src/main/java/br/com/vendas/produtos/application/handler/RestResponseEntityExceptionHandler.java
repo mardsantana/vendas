@@ -20,7 +20,6 @@ public class RestResponseEntityExceptionHandler {
     public ResponseEntity<ErrorApiResponse> handlerGenericException(APIException ex) {
         return ex.buildErrorResponseEntity();
     }
-
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorApiResponse> handlerGenericException(Exception ex) {
         log.error("Exception: ", ex);
@@ -28,7 +27,6 @@ public class RestResponseEntityExceptionHandler {
                 .body(ErrorApiResponse.builder().description("INTERNAL SERVER ERROR!")
                         .message("POR FAVOR INFORME AO ADMINISTRADOR DO SISTEMA!").build());
     }
-
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {

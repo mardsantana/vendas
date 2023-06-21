@@ -15,7 +15,7 @@ public class ProdutoListResponse {
     private String descricao;
     private Integer quantidadeMinima;
     private Integer quantidadeMaxima;
-    private LocalDate criadoEm;
+//    private LocalDate criadoEm;
     public static List<ProdutoListResponse> converte(List<Produto> produtos) {
         return produtos.stream()
                 .map(ProdutoListResponse::new)
@@ -27,6 +27,6 @@ public class ProdutoListResponse {
         this.descricao = produto.getDescricao();
         this.quantidadeMinima = produto.getQuantidadeMinima();
         this.quantidadeMaxima = produto.getQuantidadeMaxima();
-        this.criadoEm = produto.getCriadoEm();
+//        this.criadoEm = produto.getCriadoEm();
     }
 }

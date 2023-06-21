@@ -22,32 +22,24 @@ public class APIException extends RuntimeException {
                 .description(getDescription(e))
                 .build();
     }
-
     public static APIException build(HttpStatus statusException, String message) {
         return new APIException(statusException, message, null);
     }
-
     public static APIException build(HttpStatus statusException, String message, Exception e) {
         log.error("Exception: ", e);
         return new APIException(statusException, message, e);
     }
-
     private String getDescription(Exception e) {
         return Optional.ofNullable(e)
                 .map(APIException::getMessageCause).orElse(null);
     }
-
     private static String getMessageCause(Exception e) {
         return e.getCause() != null ? e.getCause().getMessage() : e.getMessage();
     }
-
-
-
     public ResponseEntity<ErrorApiResponse> buildErrorResponseEntity() {
         return ResponseEntity
                 .status(statusException)
                 .body(bodyException);
     }
-
     private static final long serialVersionUID = 1L;
 }

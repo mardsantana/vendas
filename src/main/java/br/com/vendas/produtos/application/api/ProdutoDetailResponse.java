@@ -13,7 +13,7 @@ public class ProdutoDetailResponse {
     private String descricao;
     private Integer quantidadeMinima;
     private Integer quantidadeMaxima;
-    private LocalDate criadoEm;
+//    private LocalDate criadoEm;
 
     public ProdutoDetailResponse(Produto produto) {
         this.idProduto = produto.getIdProduto();
@@ -21,6 +21,6 @@ public class ProdutoDetailResponse {
         this.descricao = produto.getDescricao();
         this.quantidadeMinima = produto.getQuantidadeMinima();
         this.quantidadeMaxima = produto.getQuantidadeMaxima();
-        this.criadoEm = produto.getCriadoEm();
+//        this.criadoEm = produto.getCriadoEm();
     }
 }

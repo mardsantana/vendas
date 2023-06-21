@@ -17,6 +17,4 @@ public class ProdutosRequest {
     private Integer quantidadeMinima;
     @Column(nullable = false)
     private Integer quantidadeMaxima;
-    @Column(nullable = false)
-    private LocalDate criadoEm;
 }
